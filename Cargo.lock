@@ -123,13 +123,13 @@ dependencies = [
 [[package]]
 name = "serge"
 version = "0.1.0"
+dependencies = [
+ "clap",
+]
 
 [[package]]
 name = "serge-core"
 version = "0.1.0"
-dependencies = [
- "clap",
-]
 
 [[package]]
 name = "strsim"
