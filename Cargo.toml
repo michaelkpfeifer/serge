@@ -1,12 +1,9 @@
 [workspace]
-
+resolver = "2"
 members = [
     "compiler-cli",
     "compiler-core",
 ]
 
-resolver = "2"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [workspace.dependencies]
+thiserror = "1.0.58"
