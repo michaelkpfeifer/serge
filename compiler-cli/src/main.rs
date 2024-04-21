@@ -1,11 +1,15 @@
+mod build;
+
 pub use serge_core::error::Result;
+
+use serge_core::build::Target;
 
 use clap::{
     builder::{styling, Styles},
     Parser,
 };
 
-#[derive(Parser)]
+#[derive(Parser, Debug)]
 #[command(
     version,
     next_display_order = None,
@@ -23,12 +27,22 @@ use clap::{
 
 enum Command {
     /// Build the project
-    Build {},
+    Build {
+        /// Emit compile time warnings as errors
+        #[arg(long)]
+        warnings_as_errors: bool,
+
+        #[arg(short, long, ignore_case = true)]
+        target: Option<Target>,
+    },
 }
 
 fn main() {
     let result = match Command::parse() {
-        Command::Build {} => command_build(),
+        Command::Build {
+            target,
+            warnings_as_errors,
+        } => command_build(target, warnings_as_errors),
     };
 
     match result {
@@ -41,6 +55,7 @@ fn main() {
     }
 }
 
-fn command_build() -> Result<()> {
+fn command_build(target: Option<Target>, warnings_as_errors: bool) -> Result<()> {
+    let _ = build::main();
     Ok(())
 }
