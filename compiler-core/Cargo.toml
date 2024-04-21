@@ -6,4 +6,5 @@ edition = "2021"
 license-file = "LICENCE"
 
 [dependencies]
+strum.workspace = true
 thiserror.workspace = true
