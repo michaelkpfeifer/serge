@@ -2,12 +2,15 @@ mod build;
 
 pub use serge_core::error::Result;
 
+use serge_core::build::Options;
 use serge_core::build::Target;
 
 use clap::{
     builder::{styling, Styles},
     Parser,
 };
+
+use strum::VariantNames;
 
 #[derive(Parser, Debug)]
 #[command(
@@ -32,9 +35,13 @@ enum Command {
         #[arg(long)]
         warnings_as_errors: bool,
 
-        #[arg(short, long, ignore_case = true)]
+        #[arg(short, long, ignore_case = true, help = target_doc())]
         target: Option<Target>,
     },
+}
+
+fn target_doc() -> String {
+    format!("The platform to target ({})", Target::VARIANTS.join("|"))
 }
 
 fn main() {
@@ -46,16 +53,15 @@ fn main() {
     };
 
     match result {
-        Ok(_) => {
-            println!("Looks like things went well.");
-        }
-        Err(_) => {
-            println!("Looks like something went wrong.");
-        }
+        Ok(_) => {}
+        Err(_) => {}
     }
 }
 
 fn command_build(target: Option<Target>, warnings_as_errors: bool) -> Result<()> {
-    let _ = build::main();
+    let _ = build::main(Options {
+        warnings_as_errors,
+        target,
+    });
     Ok(())
 }
