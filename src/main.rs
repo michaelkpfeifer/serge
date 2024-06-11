@@ -1,9 +1,9 @@
+mod error;
 mod build;
 
-pub use serge_core::error::Result;
-
-use serge_core::build::Options;
-use serge_core::build::Target;
+use crate::error::Result;
+use crate::build::Options;
+use crate::build::Target;
 
 use clap::{
     builder::{styling, Styles},
