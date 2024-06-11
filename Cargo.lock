@@ -134,17 +134,9 @@ checksum = "80af6f9131f277a45a3fba6ce8e2258037bb0477a67e610d3c1fe046ab31de47"
 
 [[package]]
 name = "serge"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "clap",
- "serge-core",
- "strum",
-]
-
-[[package]]
-name = "serge-core"
-version = "0.1.0"
-dependencies = [
  "strum",
  "thiserror",
 ]

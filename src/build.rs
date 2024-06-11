@@ -17,3 +17,15 @@ pub enum Target {
     #[strum(serialize = "javascript", serialize = "js")]
     JavaScript,
 }
+
+
+use crate::Result;
+
+pub fn main(options: Options) -> Result<Built> {
+    let result = {
+        let compiler = ProjectCompiler::new(options);
+        compiler.compile()?
+    };
+
+    Ok(result)
+}

@@ -1,10 +1,11 @@
-[workspace]
-resolver = "2"
-members = [
-    "compiler-cli",
-    "compiler-core",
-]
+[package]
+name = "serge"
+version = "0.2.0"
+authors = ["Michael Pfeifer <michael.k.pfeifer@googlemail.com>"]
+edition = "2021"
+license-file = "LICENCE"
 
-[workspace.dependencies]
+[dependencies]
+clap = { version = "4.5.4", features = ["derive"] }
 strum = { version = "0.26.2", features = ["derive"] }
 thiserror = "1.0.58"
